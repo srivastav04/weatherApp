@@ -2,6 +2,7 @@
 export default function WeatherCard({ data }) {
     if (!data) return null;
     const { name, main, weather } = data
+
     const iconUrl = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`
     return (
         <div className="p-6 bg-white rounded-lg shadow-md flex items-center justify-between">
