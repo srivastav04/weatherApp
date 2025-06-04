@@ -29,10 +29,19 @@ router.get("/", async (req, res) => {
       .sort({ searchedAt: -1 })
       .limit(5)
       .select("city temp sky icon searchedAt -_id");
-    // 4) return both weather and history
-    console.log(history);
 
-    res.json({ weather: data, history });
+    const futuredata = await axios.get(
+      `https://api.openweathermap.org/data/2.5/forecast`,
+      {
+        params: { q: city, appid: WEATHER_API_KEY, units: "metric" },
+      }
+    );
+
+    res.json({
+      weather: data,
+      history,
+      future: futuredata.data.list.slice(0, 5),
+    });
   } catch (err) {
     console.error(err.response?.data || err.message);
     res

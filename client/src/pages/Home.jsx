@@ -12,11 +12,14 @@ export default function Home() {
     const [future, setFuture] = useState([]);
     const [error, setError] = useState('');
 
+
+
     const fetchWeather = async city => {
         try {
             const { data } = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/weather`, {
                 params: { city }
             });
+            console.log(data);
 
             setWeather(data.weather);
             setHistory(data.history);

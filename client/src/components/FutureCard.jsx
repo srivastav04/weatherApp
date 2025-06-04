@@ -31,7 +31,7 @@ const FutureWeatherCards = ({ index, forecasts }) => {
 
             {/* Temperature */}
             <div className="flex items-baseline">
-                <p className="text-4xl font-extrabold">
+                <p className="text-4xl">
                     {Math.round(temp)}&deg;C
                 </p>
                 <span className="ml-2 text-gray-400">/ {Math.round(temp)}&deg;C</span>
